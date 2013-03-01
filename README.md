@@ -34,8 +34,3 @@ Generating documentation can be enabled with '--with-doc'.  HLA support can be e
 E.g. to  install Morse with generated documentation and support for ROS:
 
     brew install morse --with-doc --with-ros
-
-The current default formula installs the 1.0 release of Morse.  The cutting edge HEAD version can be installed from https://github.com/laas/morse.git using the '--head' option.
-
-    brew install morse --head
-
