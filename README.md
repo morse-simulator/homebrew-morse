@@ -9,16 +9,16 @@ Morse can be installed using the Homebrew package manager (http://mxcl.github.co
 
     brew install python3
     brew tap davidhodo/homebrew-morse
-    brew install morse
+    brew install morse-simulator
 
 To upgrade to the latest version:
 
     brew update
-    brew install --upgrade morse
+    brew install --upgrade morse-simulator
     
 To uninstall Morse:
 
-    brew uninstall morse
+    brew uninstall morse-simulator
 
 # Formula Options
 
@@ -33,7 +33,7 @@ Generating documentation can be enabled with '--with-doc'.  HLA support can be e
 
 E.g. to  install Morse with generated documentation and support for ROS:
 
-    brew install morse --with-doc --with-ros
+    brew install morse-simulator --with-doc --with-ros
     
 # ROS Installation Issues
 The 1.0 version of Morse has been tested on OSX with ROS Groovy, Python 3.3, and Blender 2.65. ROS was installed following the Homebrew based installation instructions given at: 

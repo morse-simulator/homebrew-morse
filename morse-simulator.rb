@@ -1,6 +1,6 @@
 require 'formula'
 
-class Morse < Formula
+class MorseSimulator < Formula
   homepage ''
   url 'https://github.com/laas/morse.git', :tag => '1.0.1'
   #head 'https://github.com/laas/morse.git', :branch => 'master'
