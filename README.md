@@ -5,7 +5,7 @@ Homebrew recipes to install Morse (https://morse.openrobots.org) and its depende
 
 # Installation
 
-Morse can be installed using the Homebrew package manager (http://mxcl.github.com/homebrew/) by:
+Morse can be installed using the Homebrew package manager (http://brew.sh) by:
 
     brew install python3
     brew tap davidhodo/homebrew-morse
