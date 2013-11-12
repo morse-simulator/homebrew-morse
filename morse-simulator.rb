@@ -1,12 +1,9 @@
 require 'formula'
 
 class MorseSimulator < Formula
-  homepage ''
-  url 'https://github.com/laas/morse.git', :tag => '1.1.1'
-  #head 'https://github.com/laas/morse.git', :branch => 'master'
   homepage 'http://morse.openrobots.org' 
-  version '1.1.1'
-  #sha1 '6b484890e2dc7801bcb135193cec3799f42e4208'
+  url 'https://github.com/laas/morse.git', :tag => '1.1.1'
+  head 'https://github.com/laas/morse.git'
 
   option 'with-ros', 'Enable ROS middleware support'
   option 'with-moos', 'Enable MOOS middleware support'
@@ -15,9 +12,7 @@ class MorseSimulator < Formula
   option 'with-hla', 'Enable HLA support'
   option 'with-doc', 'Enable documentation generation'
 
-
   depends_on 'cmake' => :build
-  #depends_on :blender
   depends_on 'python3'
 
   def install
@@ -27,7 +22,7 @@ class MorseSimulator < Formula
     which_python = `python3 -c 'import sys;print(sys.version[:3])'`.strip
     base_path= `python3 -c 'import os;print(os.__file__[:os.__file__.index("/lib/")])'`.strip
     python_include= base_path + "/Headers"
-    python_libs= base_path + "/lib/libpython" + version + ".dylib"
+    python_libs= base_path + "/lib/libpython" + which_python + ".dylib"
 
     cmake_args = std_cmake_parameters.split
 
