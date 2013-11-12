@@ -1,7 +1,7 @@
 homebrew-morse
 ==============
 
-Homebrew recipes to install [Morse](https://morse.openrobots.org) and its
+Homebrew recipes to install [Morse](http://morse.openrobots.org) and its
 dependencies.
 
 # Installation
