@@ -10,6 +10,7 @@ class MorseSimulator < Formula
   option 'with-pocolibs', 'Enable Pocolibs middleware support'
   option 'with-yarp2', 'Enable Yarp2 middleware support'
   option 'with-hla', 'Enable HLA support'
+  option 'with-pymorse' 'Enable the PyMorse binding'
   option 'with-doc', 'Enable documentation generation'
 
   depends_on 'cmake' => :build
@@ -56,6 +57,10 @@ class MorseSimulator < Formula
     if build.include? 'with-doc'
       cmake_args << "-DBUILD_DOC_SUPPORT:BOOL=ON"
     end  
+
+    if build.include? 'with-pymorse'
+      cmake_args << "-DPYMORSE_SUPPORT:BOOL=ON"
+    end
 
     system "cmake", ".", *cmake_args
     system "make"
