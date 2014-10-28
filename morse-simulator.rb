@@ -1,8 +1,8 @@
 require 'formula'
 
 class MorseSimulator < Formula
-  homepage 'http://morse.openrobots.org' 
-  url 'https://github.com/laas/morse.git', :tag => '1.2'
+  homepage 'http://morse.openrobots.org'
+  url 'https://github.com/laas/morse.git', :tag => '1.2.1'
   head 'https://github.com/laas/morse.git'
 
   option 'with-ros', 'Enable ROS middleware support'
@@ -18,7 +18,7 @@ class MorseSimulator < Formula
 
   def install
 
-    # We need to find the Python3 library since the find Python 
+    # We need to find the Python3 library since the find Python
     # cmake script does not do a good job of this on OSX
     which_python = `python3 -c 'import sys;print(sys.version[:3])'`.strip
     base_path= `python3 -c 'import os;print(os.__file__[:os.__file__.index("/lib/")])'`.strip
@@ -48,15 +48,15 @@ class MorseSimulator < Formula
 
     if build.include? 'with-yarp2'
       cmake_args << "-DBUILD_YARP2_SUPPORT:BOOL=ON"
-    end        
+    end
 
     if build.include? 'with-hla'
       cmake_args << "-DBUILD_HLA_SUPPORT:BOOL=ON"
-    end  
+    end
 
     if build.include? 'with-doc'
       cmake_args << "-DBUILD_DOC_SUPPORT:BOOL=ON"
-    end  
+    end
 
     if build.include? 'with-pymorse'
       cmake_args << "-DPYMORSE_SUPPORT:BOOL=ON"
