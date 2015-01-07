@@ -2,7 +2,7 @@ require 'formula'
 
 class MorseSimulator < Formula
   homepage 'http://morse.openrobots.org'
-  url 'https://github.com/morse-simulator/morse.git', :tag => '1.2.1'
+  url 'https://github.com/morse-simulator/morse.git', :tag => '1.2.2'
   head 'https://github.com/morse-simulator/morse.git'
 
   option 'with-ros', 'Enable ROS middleware support'
