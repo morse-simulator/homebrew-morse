@@ -27,13 +27,14 @@ The default formula configures and installs Morse for only the sockets
 middleware. To following formula options are available to enable middleware
 support:
 
-* --with-ros
-* --with-moos
-* --with-pocolibs
-* --with-yarp2
+* `--with-ros`
+* `--with-moos`
+* `--with-pocolibs`
+* `--with-yarp2`
 
-Generating documentation can be enabled with '--with-doc'.
-HLA support can be enabled with '--with-hla'.
+* Generating documentation can be enabled with `--with-doc`.
+* HLA support can be enabled with `--with-hla`.
+* Finally, pymorse support with `--with-pymorse`
 
 E.g. to  install Morse with generated documentation and support for ROS:
 
@@ -51,4 +52,3 @@ In addition to the instructions provided on the ROS website, a version of
 rospkg for Python 3 must be installed for Morse to operate properly:
 
     sudo pip3 install rospkg
-
