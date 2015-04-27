@@ -2,7 +2,7 @@ require 'formula'
 
 class MorseSimulator < Formula
   homepage 'http://morse.openrobots.org'
-  url 'https://github.com/morse-simulator/morse.git', :tag => '1.2.2'
+  url 'https://github.com/morse-simulator/morse.git', :tag => '1.3'
   head 'https://github.com/morse-simulator/morse.git'
 
   option 'with-ros', 'Enable ROS middleware support'
@@ -12,26 +12,18 @@ class MorseSimulator < Formula
   option 'with-hla', 'Enable HLA support'
   option 'with-pymorse' 'Enable the PyMorse binding'
   option 'with-doc', 'Enable documentation generation'
+  option 'with-python=', 'Select the right python interpreter'
 
   depends_on 'cmake' => :build
-  depends_on 'python3'
+
+  def which_python3
+    python3 = ARGV.value("with-python") || which("python3").to_s
+    fail "#{python3} not found" unless File.exist? python3
+    python3
+  end
 
   def install
-
-    # We need to find the Python3 library since the find Python
-    # cmake script does not do a good job of this on OSX
-    which_python = `python3 -c 'import sys;print(sys.version[:3])'`.strip
-    base_path= `python3 -c 'import os;print(os.__file__[:os.__file__.index("/lib/")])'`.strip
-    python_include= base_path + "/Headers"
-    python_libs= base_path + "/lib/libpython" + which_python + ".dylib"
-
     cmake_args = std_cmake_parameters.split
-
-    cmake_args << "-DPYTHON_MODULE_gaussian_BUILD_SHARED:BOOL=OFF"
-    cmake_args << "-DPYTHON_MODULE_zbufferto3d_BUILD_SHARED:BOOL=OFF"
-    cmake_args << "-DPYTHON_MODULE_zbuffertodepth_BUILD_SHARED:BOOL=OFF"
-    cmake_args << "-DPYTHON_INCLUDE_DIR:PATH=" + python_include
-    cmake_args << "-DPYTHON_LIBRARY:FILEPATH=" + python_libs
 
     # add optional build parameters
     if build.include? 'with-ros'
@@ -60,6 +52,10 @@ class MorseSimulator < Formula
 
     if build.include? 'with-pymorse'
       cmake_args << "-DPYMORSE_SUPPORT:BOOL=ON"
+    end
+
+    if build.include? 'with-python='
+    	cmake_args << "-DPYTHON_EXECUTABLE=#{which_python3}"
     end
 
     system "cmake", ".", *cmake_args
