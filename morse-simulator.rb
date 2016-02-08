@@ -2,7 +2,7 @@ require 'formula'
 
 class MorseSimulator < Formula
   homepage 'http://morse.openrobots.org'
-  url 'https://github.com/morse-simulator/morse.git', :tag => '1.3'
+  url 'https://github.com/morse-simulator/morse.git', :tag => '1.4'
   head 'https://github.com/morse-simulator/morse.git'
 
   option 'with-ros', 'Enable ROS middleware support'
@@ -10,6 +10,7 @@ class MorseSimulator < Formula
   option 'with-pocolibs', 'Enable Pocolibs middleware support'
   option 'with-yarp2', 'Enable Yarp2 middleware support'
   option 'with-hla', 'Enable HLA support'
+  option 'with-mavlink', 'Enable MAVLINK support'
   option 'with-pymorse' 'Enable the PyMorse binding'
   option 'with-doc', 'Enable documentation generation'
   option 'with-python=', 'Select the right python interpreter'
@@ -44,6 +45,10 @@ class MorseSimulator < Formula
 
     if build.include? 'with-hla'
       cmake_args << "-DBUILD_HLA_SUPPORT:BOOL=ON"
+    end
+
+    if build.include? 'with-mavlink'
+      cmake_args << "-DBUILD_MAVLINK_SUPPORT:BOOL=ON"
     end
 
     if build.include? 'with-doc'
