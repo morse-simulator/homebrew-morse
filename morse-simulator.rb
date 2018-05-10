@@ -24,7 +24,7 @@ class MorseSimulator < Formula
   end
 
   def install
-    cmake_args = std_cmake_parameters.split
+    cmake_args = std_cmake_parameters
 
     # add optional build parameters
     if build.include? 'with-ros'
